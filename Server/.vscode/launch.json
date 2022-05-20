@@ -5,17 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "name": "nodemon",
-            "program": "${workspaceFolder}/app.js",
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5858,
+            "restart": true
+        },
+        {
+            "type": "node",
             "request": "launch",
+            "name": "nodemon",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
+            "program": "src/app.js",
             "restart": true,
-            "runtimeExecutable": "nodemon",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

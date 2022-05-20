@@ -18,7 +18,10 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
-    "rxjs": "~7.5.0",
+    "core-js": "^2.4.1",
+    "ngx-toastr": "^8.1.0",
+    "rxjs": "^6.6.7",
+    "rxjs-compat": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -34,6 +37,15 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "@angular/language-service": "^5.0.0",
+    "@types/jasminewd2": "~2.0.2",
+    "codelyzer": "^4.0.1",
+    "jasmine-spec-reporter": "~4.1.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "protractor": "~5.1.2",
+    "ts-node": "~3.2.0",
+    "tslint": "~5.7.0"
   }
 }

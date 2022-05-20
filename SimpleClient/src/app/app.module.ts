@@ -1,8 +1,15 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {AuthService} from './auth.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AccountBalanceService} from './account-balance.service';
+
 
 @NgModule({
   declarations: [
@@ -10,9 +17,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AccountBalanceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
