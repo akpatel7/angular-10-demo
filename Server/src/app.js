@@ -2,6 +2,11 @@ const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+/**
+ * Use Redis as the session store
+ */
+const redis = require('redis');
+const connectRedis = require('connect-redis');
 
 /**
  * Creating a new express app
@@ -23,12 +28,34 @@ app.use(cors({
 app.use(bodyParser.json());
 
 /**
+ * Connect express-session to Redis as the session store
+ */
+// if you run behind a proxy (e.g. nginx)
+// app.set('trust proxy', 1);
+const RedisStore = connectRedis(session);
+/********************************************************** */
+// 1 configure our redis
+const redisClient = redis.createClient({
+    port: 6379,
+    host: 'localhost'
+});
+
+/**
  * Initializing the session magic of express-session package
  */
+const oneDay = 1000 * 60 * 60 * 24;
+// 2. configure session middleware
 app.use(session({
-    secret: "Shh, its a secret!",
+    store: new RedisStore({ client: redisClient }),
+    secret: 'mySecret',
+    saveUninitialized: false,
     resave: false,
-    saveUninitialized: true
+    cookie: {
+        secure: false, // if true: only transmit cookie over https
+        httpOnly: true, // if true: prevents client side JS from reading the cookie
+        maxAge: oneDay, // session max age in milliseconds
+        sameSite: 'lax' // make sure sameSite is not none
+    }
 }));
 
 /**
@@ -74,6 +101,7 @@ const validatePayloadMiddleware = (req, res, next) => {
 };
 
 /**
+ * create an unprotected login endpoint
  * Log the user in.
  * User needs to provide pw and email, this is then compared to the pw in the "database"
  * If pw and email match, the user is fetched and stored into the session.
