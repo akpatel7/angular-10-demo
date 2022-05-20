@@ -1,0 +1,33 @@
+{
+  "name": "session-backend",
+  "version": "0.0.0",
+  "description": "Node.js backend for sessions (with Express)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "kill": "lsof -t -i tcp:3000 | xargs kill"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bersling/express-session-angular-ngx.git"
+  },
+  "keywords": [
+    "Express",
+    "Node.js"
+  ],
+  "author": "Daniel Niederberger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bersling/express-session-angular-ngx/issues"
+  },
+  "homepage": "https://github.com/bersling/express-session-angular-ngx#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
